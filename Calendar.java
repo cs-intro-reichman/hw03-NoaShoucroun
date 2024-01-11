@@ -3,7 +3,7 @@ import javax.sound.sampled.SourceDataLine;
 /**
  * Prints the calendars of all the years in the 20th century.
  */
-public class Calendar1 {
+public class Calendar {
 	// Starting the calendar on 1/1/1900
 	static int dayOfMonth = 1;
 	static int month = 1;
@@ -17,7 +17,7 @@ public class Calendar1 {
 	 * period.
 	 */
 	public static void main(String args[]) {
-		int counter = 0;
+		int givenYear = Integer.parseInt(args[0]);
 		// Advances the date and the day-of-the-week from 1/1/1900 till 31/12/1999,
 		// inclusive.
 		// Prints each date dd/mm/yyyy in a separate line. If the day is a Sunday,
@@ -27,13 +27,13 @@ public class Calendar1 {
 		int debugDaysCounter = 0;
 		//// Write the necessary initialization code, and replace the condition
 		//// of the while loop with the necessary condition
-		while (year <= 1999) {
+		while (year < givenYear) {
+			advance();
+		}
+		while (year == givenYear) {
 
 			if (dayOfWeek == 1) {
 				System.out.println(dayOfMonth + "/" + month + "/" + year + " Sunday");
-
-				if (dayOfMonth == 1 && dayOfWeek == 1)
-					counter++;
 			} else {
 				System.out.println(dayOfMonth + "/" + month + "/" + year);
 			}
@@ -49,7 +49,6 @@ public class Calendar1 {
 
 		}
 
-		System.out.println("During the 20th century, " + counter + " Sundays fell on the first day of the month");
 	}
 
 	// Advances the date (day, month, year) and the day-of-the-week.
